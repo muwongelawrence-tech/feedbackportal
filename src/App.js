@@ -14,8 +14,8 @@ const validationSchema = Yup.object({
 
 function App() {
 
-  const uploadValues = (e, { values }) => {
-       e.preventDefault();
+  const uploadValues = (values) => {
+      //  e.preventDefault();
        console.log(values);
        // lofgic of submitting goes here
 
@@ -81,14 +81,22 @@ function App() {
         {/* form section */}
 
         <Formik
-             initialValues = {{ administratorName: "" ,email:"" ,password:""}}
-             onSubmit = { values => (values) }
-             validationSchema = {validationSchema}
-             >
-          
-       </Formik>
+             initialValues = {{ 
+              name: "",
+              businessname:"",
+              contact: "",
+              location:"",
+              comment: ""}}
 
-       <form action="" className = "mt-3 grid grid-cols-1 space-y-3">
+             onSubmit = { values => console.log(values) }
+             validationSchema = { validationSchema }
+        >
+
+          {
+            ({ handleChange ,handleSubmit, errors , touched }) => (
+                <>
+                 
+         <form action = "" className = "mt-3 grid grid-cols-1 space-y-3">
        
            <label 
             htmlFor="name"
@@ -101,7 +109,12 @@ function App() {
                placeholder = "Name"
                id = "name" 
                className='input '
+               onChange = { handleChange("name") }
              />
+
+            { touched.name &&  errors.name && 
+             <p className = "text-sm text-red-400 my-1">{errors.name}</p>
+            }
 
           </label>
 
@@ -116,7 +129,12 @@ function App() {
                placeholder = "Business Name"
                id = "businessname" 
                className='input '
+               onChange = { handleChange("businessname") }
              />
+
+           { touched.businessname &&  errors.businessname && 
+             <p className = "text-sm text-red-400 my-1">{errors.businessname}</p>
+            }
 
           </label>
 
@@ -131,7 +149,12 @@ function App() {
                placeholder = "Contact"
                id = "contact" 
                className= { `input `}
+               onChange = { handleChange("contact") }
              />
+
+           { touched.contact &&  errors.contact && 
+             <p className = "text-sm text-red-400 my-1">{ errors.contact }</p>
+            }
 
           </label>
 
@@ -147,7 +170,12 @@ function App() {
                placeholder = "Business Location"
                id = "location" 
                className='input '
+               onChange = { handleChange("location") }
              />
+
+            { touched.location &&  errors.location && 
+             <p className = "text-sm text-red-400 my-1">{ errors.location }</p>
+            }
 
           </label>
 
@@ -164,26 +192,43 @@ function App() {
           name="comment" 
           rows="4" cols="50"
           className='input text-gray-800 resize-none' placeholder = "Type your comment here.."
-          maxlength="10"
+          maxlength="200" 
+          onChange = { handleChange("comment") }
           >
          
           </textarea>
+
+          { touched.comment &&  errors.comment && 
+             <p className = "text-sm text-red-400 my-1">{ errors.comment }</p>
+          }
 
           </label>
 
 
          
           <button 
-           type="submit"
+           type = "submit"
            className = {`bg-blue-400 hover:bg-blue-600 active:bg-blue-800 text-white p-3 
            cursor-pointer rounded-md `}
-           onClick = { handleSubmit }
+
+           onClick = { e => {
+            e.preventDefault();
+             handleSubmit();
+          }}
           >
             Submit Feedback
           </button>
 
         
        </form>
+
+
+                </>
+            )
+          }
+       </Formik>
+
+      
 
     </div>
 </div>
