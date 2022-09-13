@@ -1,9 +1,22 @@
 import React from 'react';
+import { Formik }from "formik";
+import * as Yup from "yup";
+
+const validationSchema = Yup.object({
+  name: Yup.string().max(50).required(),
+  businessname: Yup.string().max(50).required(),
+  contact: Yup.string().max(15).required(),
+  location: Yup.string().max(10).required(),
+  comment: Yup.string().required()
+
+});
+
 
 function App() {
 
-  const handleSubmit = (e) => {
+  const uploadValues = (e, { values }) => {
        e.preventDefault();
+       console.log(values);
        // lofgic of submitting goes here
 
   }
@@ -67,6 +80,14 @@ function App() {
 
         {/* form section */}
 
+        <Formik
+             initialValues = {{ administratorName: "" ,email:"" ,password:""}}
+             onSubmit = { values => (values) }
+             validationSchema = {validationSchema}
+             >
+          
+       </Formik>
+
        <form action="" className = "mt-3 grid grid-cols-1 space-y-3">
        
            <label 
@@ -91,9 +112,9 @@ function App() {
 
            {/* <span className="block text-sm font-medium text-slate-700"> Business Name :</span> */}
 
-             <input type="business_name" 
+             <input type="text" 
                placeholder = "Business Name"
-               id = "business_name" 
+               id = "businessname" 
                className='input '
              />
 
@@ -142,7 +163,9 @@ function App() {
           id="comment" 
           name="comment" 
           rows="4" cols="50"
-         className='input text-gray-800 resize-none' placeholder = "Type your comment here..">
+          className='input text-gray-800 resize-none' placeholder = "Type your comment here.."
+          maxlength="10"
+          >
          
           </textarea>
 
