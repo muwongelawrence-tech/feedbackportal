@@ -86,8 +86,9 @@ function App() {
               businessname:"",
               contact: "",
               location:"",
-              comment: ""}}
-
+              comment: "",
+              file: ""
+          }}
              onSubmit = { values => console.log(values) }
              validationSchema = { validationSchema }
         >
@@ -113,7 +114,7 @@ function App() {
              />
 
             { touched.name &&  errors.name && 
-             <p className = "text-sm text-red-400 my-1">{errors.name}</p>
+             <p className = "text-sm text-red-400 my-1">{ errors.name }</p>
             }
 
           </label>
@@ -176,6 +177,25 @@ function App() {
             { touched.location &&  errors.location && 
              <p className = "text-sm text-red-400 my-1">{ errors.location }</p>
             }
+
+          </label>
+
+          <label 
+            htmlFor="location"
+            className = "block"
+           >
+
+           {/* <span className="block text-sm font-medium text-slate-700"> Location:</span> */}
+
+             <input type="file" 
+               placeholder = "upload file"
+               id = "file" 
+               accept = '.pdf'
+               className='input '
+
+               onChange = { handleChange("file") }
+             />
+
 
           </label>
 
