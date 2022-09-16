@@ -1,7 +1,12 @@
 import React from 'react';
 import { Formik }from "formik";
 import * as Yup from "yup";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
+
+// this is the validation schema for the form
 const validationSchema = Yup.object({
   name: Yup.string().max(50).required(),
   businessname: Yup.string().max(50).required(),
@@ -26,7 +31,7 @@ function App() {
   return (
     <div className = {`grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600 
     bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 `}
-      // style = "background-image: url('/images/bg2.jpg');"
+   
     >
 
 {/* left */}
@@ -89,7 +94,7 @@ function App() {
               comment: "",
               file: ""
           }}
-             onSubmit = { values => console.log(values) }
+             onSubmit = { values => uploadValues(values)}
              validationSchema = { validationSchema }
         >
 
