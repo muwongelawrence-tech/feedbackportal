@@ -21,7 +21,8 @@ const validationSchema = Yup.object({
 function App() {
 
   const uploadValues = async(values) => {
-      //  e.preventDefault();
+     
+    //  e.preventDefault();
 
        console.log(values);
        // lofgic of submitting goes here
@@ -54,12 +55,11 @@ function App() {
    
     >
 
-   <ToastContainer/>
 
 {/* left */}
 <div className='m-2  h-[400px]  lg:h-screen   relative  '>
 
-{/* bg-seconds_bg bg-no-repeat bg-cover bg-center bg-opacity-20 */}
+<ToastContainer/>
 
 <div className='absolute left-8 top-20 h-10 w-20 flex items-center' >
          <img
