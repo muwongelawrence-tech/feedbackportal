@@ -22,8 +22,8 @@ function App() {
 
   const uploadValues = async(values) => {
      
-    //  e.preventDefault();
-
+         //  e.preventDefault();
+        // print values from  the form
        console.log(values);
        // lofgic of submitting goes here
 
