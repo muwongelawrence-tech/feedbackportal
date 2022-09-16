@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-import { submitData } from '../services/uploadDataService';
+import { submitData } from './services/uploadDataService';
 
 
 // this is the validation schema for the form
@@ -22,7 +22,7 @@ function App() {
 
   const uploadValues = async(values) => {
       //  e.preventDefault();
-      
+
        console.log(values);
        // lofgic of submitting goes here
 
