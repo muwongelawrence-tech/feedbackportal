@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { submitData } from '../services/uploadDataService';
 
 
 // this is the validation schema for the form
@@ -19,10 +20,29 @@ const validationSchema = Yup.object({
 
 function App() {
 
-  const uploadValues = (values) => {
+  const uploadValues = async(values) => {
       //  e.preventDefault();
+      
        console.log(values);
        // lofgic of submitting goes here
+
+       try {
+        const { data } =  await submitData(values); 
+
+        console.log(data);
+
+
+       } catch (ex) {
+
+         if(ex.response && ex.response.status === 400){
+             //console.log(ex.response.data);
+             toast(ex.response.data);}
+             
+         
+           
+       }
+
+
 
   }
 
@@ -33,6 +53,8 @@ function App() {
     bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 `}
    
     >
+
+   <ToastContainer/>
 
 {/* left */}
 <div className='m-2  h-[400px]  lg:h-screen   relative  '>
