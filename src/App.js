@@ -22,10 +22,10 @@ function App() {
 
   const uploadValues = async(values) => {
      
-      //  e.preventDefault();
+        //  e.preventDefault();
         
-       console.log(values);
-       // logic of submitting goes here
+        console.log(values);
+        // logic of submitting goes here
 
        try {
         const { data } =  await submitData(values); 
@@ -47,15 +47,12 @@ function App() {
   
 
   return (
-    <div className = {`grid grid-cols-1 md:grid-cols-2  text-gray-600 
-     `}
-   
-    >
+    <div className = {`grid grid-cols-1  md:grid-cols-2 gap-0  text-gray-600 `}>
 
 {/* bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 */}
 
 {/* left */}
-<div className='m-0  h-full   relative bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 '>
+<div className='m-0   pl-4 pr-10 h-[500px] md:h-full md:w-full  relative bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 '>
 
 <ToastContainer/>
 
@@ -80,11 +77,11 @@ function App() {
 
       <button
         
-        className = {`text-purple-500 bg-white px-10 py-4 rounded-full shadow-md font-bold
+        className = {`text-purple-500 bg-white px-10 py-2 rounded-full shadow-md font-bold
                         my-3 hover:shadow-xl active:scale-90 transition duration-150 font-mono`}
                
       >
-          Send Feedback
+          Back
       </button>
 
 
@@ -95,6 +92,7 @@ function App() {
 
 {/* Right */}
 {/* px-2 mt-2 md:mt-0  py-10 */}
+
 <div className = " px-2 mt-2 md:mt-0  py-10 ">
 
     <div className = " flex flex-col bg-white  rounded-md p-10  max-w-md mx-auto shadow-2xl">
@@ -115,7 +113,7 @@ function App() {
               comment: "",
               file: ""
           }}
-             onSubmit = { values => uploadValues(values)}
+             onSubmit = { values => uploadValues(values) }
              validationSchema = { validationSchema }
         >
 
