@@ -9,6 +9,7 @@ const apiEndpoint = "http://api2.secondsug.com/api/add_feedback/";
 
 export function submitData(data){
     return http.post(apiEndpoint, {
+        employee_name: data.employee,
         name: data.name,
         bussiness_name: data.businessname,
         location: data.location,

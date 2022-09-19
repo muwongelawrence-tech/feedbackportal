@@ -9,6 +9,7 @@ import { submitData } from './services/uploadDataService';
 
 // This is the validation schema for the form
 const validationSchema = Yup.object({
+  employee_name: Yup.string().max(50).required(),
   name: Yup.string().max(50).required(),
   businessname: Yup.string().max(50).required(),
   contact: Yup.string().max(15).required(),
@@ -56,12 +57,14 @@ function App() {
 
 <ToastContainer/>
 
-<div className='absolute left-8 top-20 h-10 w-20 flex items-center' >
+<div className='absolute left-8 top-20 h-20 w-20 flex items-center ' >
          <img
            src = {"/images/logo.png"}
            layout='fill'
+           className='bg-white rounded-full'
          />
-   </div>
+        
+ </div>
 
    <div className = " absolute top-52 left-8 ">
        <h1 className = "text-3xl m-3 text-gray-100">
@@ -75,14 +78,15 @@ function App() {
        </h3>
 
 
-      <button
-        
-        className = {`text-purple-500 bg-white px-10 py-2 rounded-full shadow-md font-bold
-                        my-3 hover:shadow-xl active:scale-90 transition duration-150 font-mono`}
-               
-      >
-          Back
-      </button>
+     <a href="https://secondsug.com/">
+        <button
+            
+            className = {`text-purple-500 bg-white px-10 py-2 rounded-full shadow-md font-bold
+                            my-3 hover:shadow-xl active:scale-90 transition duration-150 font-mono`}  
+          >
+              Back
+          </button>
+     </a>
 
 
       
@@ -106,6 +110,7 @@ function App() {
 
         <Formik
              initialValues = {{ 
+              employee_name:"",
               name: "",
               businessname:"",
               contact: "",
@@ -122,6 +127,26 @@ function App() {
                 <>
                  
          <form action = "" className = "mt-3 grid grid-cols-1 space-y-3">
+
+         <label 
+            htmlFor="employee_name"
+            className = "block"
+           >
+
+           {/* <span className="block text-sm font-medium text-slate-700">Name :</span> */}
+
+             <input type="text" 
+               placeholder = "Employee Name"
+               id = "employee_name" 
+               className = 'input '
+               onChange = { handleChange("employee_name") }
+             />
+
+            { touched.employee_name &&  errors.employee_name && 
+             <p className = "text-sm text-red-400 my-1">{ errors.employee_name }</p>
+            }
+
+          </label>
        
            <label 
             htmlFor="name"
