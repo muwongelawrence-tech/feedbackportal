@@ -95,7 +95,6 @@ function App() {
 </div>
 
 {/* Right */}
-{/* px-2 mt-2 md:mt-0  py-10 */}
 
 <div className = " px-2 mt-2 md:mt-0  py-10 ">
 
