@@ -4,7 +4,7 @@ import config from "../config.json";
 
 
 const apiEndpoint = "http://api2.secondsug.com/api/add_feedback/";
-// const apiEndpoint = config.apiURl + "/shoes";
+
 
 
 export function submitData(data){

@@ -22,10 +22,10 @@ function App() {
 
   const uploadValues = async(values) => {
      
-         //  e.preventDefault();
-        // print values from  the form
+      //  e.preventDefault();
+        
        console.log(values);
-       // lofgic of submitting goes here
+       // logic of submitting goes here
 
        try {
         const { data } =  await submitData(values); 
@@ -37,10 +37,7 @@ function App() {
 
          if(ex.response && ex.response.status === 400){
              //console.log(ex.response.data);
-             toast(ex.response.data);}
-             
-         
-           
+             toast(ex.response.data);}  
        }
 
 
@@ -50,14 +47,15 @@ function App() {
   
 
   return (
-    <div className = {`grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-600 
-    bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 `}
+    <div className = {`grid grid-cols-1 md:grid-cols-2  text-gray-600 
+     `}
    
     >
 
+{/* bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 */}
 
 {/* left */}
-<div className='m-2  h-[400px]  lg:h-screen   relative  '>
+<div className='m-0  h-full   relative bg-seconds_bg bg-no-repeat bg-cover  bg-opacity-50 '>
 
 <ToastContainer/>
 
@@ -96,6 +94,7 @@ function App() {
 </div>
 
 {/* Right */}
+{/* px-2 mt-2 md:mt-0  py-10 */}
 <div className = " px-2 mt-2 md:mt-0  py-10 ">
 
     <div className = " flex flex-col bg-white  rounded-md p-10  max-w-md mx-auto shadow-2xl">
