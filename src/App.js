@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 import { submitData } from './services/uploadDataService';
 
 
-// this is the validation schema for the form
+// This is the validation schema for the form
 const validationSchema = Yup.object({
   name: Yup.string().max(50).required(),
   businessname: Yup.string().max(50).required(),
